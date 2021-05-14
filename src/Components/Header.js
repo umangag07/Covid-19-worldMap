@@ -1,9 +1,11 @@
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
+import "../index.css"
+
 
 const HeaderContainer = styled.div`
-    height:20vh;
+    height:15vh;
     width:100%;
     display:flex;
     justify-content:space-evenly;
@@ -13,25 +15,36 @@ const HeaderContainer = styled.div`
 `;
 
 const CardInfo = styled.div`
-    height:18vh;
+    height:13vh;
     width:20%;
     display:flex;
     flex-direction: column;
     justify-content:space-around;
    
     align-items:center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Noto Sans JP', sans-serif;
     h2{
         font-family: 'Times New Roman', Times, serif;
-        color:#cf004b;
+        color:${props=>props.heading_color}
     }
     h3{
-        color:#12222c;
-        font-family: 'Times New Roman', Times, serif;
+        color:${props=>props.subheading_color};
+        font-family: 'Noto Sans JP', sans-serif;
     }
    
 
 `
+const Heading = styled.div`
+height:20vh;
+width:100%;
+font-size:30px;
+color:#c6ffc1;
+background-color:#334443;
+align-text:center;
+display:flex;
+justify-content:center;
+padding-top:12vh;
+`;
 const Header =()=> {
     const [data,setData] = useState({});
 
@@ -47,16 +60,17 @@ const Header =()=> {
     })
     return (
         <HeaderContainer>
-            <CardInfo>
+            <Heading>Covid-19 World Map</Heading>
+            <CardInfo heading_color="#0061a8" subheading_color="#0061a8">
                 <h2>Total Cases</h2>
                 <h3>{data.cases}</h3>
             </CardInfo>
-            <CardInfo>
+            <CardInfo heading_color="#fb3640" subheading_color="#fb3640">
             <h2>Total Deaths</h2>
             <h3>{data.deaths}</h3>
 
             </CardInfo>
-            <CardInfo>
+            <CardInfo heading_color="#81b214" subheading_color="#81b214">
             <h2>Total Recovered</h2>
             <h3>{data.recovered}</h3>
 
